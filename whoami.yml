@@ -3,7 +3,7 @@
   tasks:
     - name: details
       shell: |
-        nawhoami
+        whoami
         hostname
       register: out
     - debug: var=out
