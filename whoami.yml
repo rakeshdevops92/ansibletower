@@ -5,4 +5,5 @@
       shell: |
         nawhoami
         hostname
-
+       register: out
+    - debug: var=out
