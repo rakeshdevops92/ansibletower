@@ -4,7 +4,7 @@
   - name: Ansible delete file glob
     find:
       paths: /home/cloud_user/{{dir_name}}
-      # patterns: "*.txt"
+      patterns: "*"
     register: files_to_delete
 
   - name: Ansible remove file glob
