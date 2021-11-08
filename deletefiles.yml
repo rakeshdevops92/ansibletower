@@ -1,14 +1,19 @@
 ---
 - hosts: all
   tasks:
-  - name: Ansible delete file glob
-    find:
-      paths: /home/cloud_user/{{dir_name}}
-      patterns: "*"
-    register: files_to_delete
+  # - name: Ansible delete file glob
+  #   find:
+  #     paths: /home/cloud_user/{{dir_name}}
+  #     patterns: "*"
+  #   register: files_to_delete
 
-  - name: Ansible remove file glob
+  # - name: Ansible remove file glob
+  #   file:
+  #     path: "{{ item.path }}"
+  #     state: absent
+  #   with_items: "{{ files_to_delete.files }}"
+  
+  - name: Remove directory
     file:
-      path: "{{ item.path }}"
+      path: /home/cloud_user/{{dir_name}}
       state: absent
-    with_items: "{{ files_to_delete.files }}"
