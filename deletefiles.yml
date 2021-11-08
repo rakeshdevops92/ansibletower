@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-  - name: Ansible delete dir
+  - name: Find folders to delete
     find:
       paths: /home/cloud_user/{{dir_name}}
       recurse: true
@@ -9,13 +9,13 @@
       excludes: 'APP,DEN'
     register: dirs_to_delete
 
-  - name: Ansible delete files
+  - name: Find files to delete
     find:
       paths: /home/cloud_user/{{dir_name}}
       recurse: true
     register: files_to_delete
 
-  - name: Ansible remove file glob
+  - name: Delete files and folders
     file:
       path: "{{ item.path }}"
       state: absent      
