@@ -6,14 +6,13 @@
       paths: /home/cloud_user/{{dir_name}}
       recurse: true
       file_type: directory
-      # patterns: "*"
+      excludes: 'APP,DEN'
     register: dirs_to_delete
 
   - name: Ansible delete files
     find:
       paths: /home/cloud_user/{{dir_name}}
       recurse: true
-      # patterns: "*"
     register: files_to_delete
 
   - name: Ansible remove file glob
