@@ -3,8 +3,8 @@
   tasks:
   - name: Ansible delete file glob
     find:
-      paths: /home/cloud_user/delete
-      patterns: "*.txt"
+      paths: /home/cloud_user/{{dir_name}}
+      # patterns: "*.txt"
     register: files_to_delete
 
   - name: Ansible remove file glob
