@@ -13,7 +13,6 @@
     find:
       paths: /home/cloud_user/{{dir_name}}
       recurse: true
-      file_type: files
       # patterns: "*"
     register: files_to_delete
 
