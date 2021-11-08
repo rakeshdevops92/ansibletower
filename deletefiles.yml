@@ -1,5 +1,5 @@
 ---
-- hosts:
+- hosts: All
   tasks:
   - name: Find folders to delete
     find:
