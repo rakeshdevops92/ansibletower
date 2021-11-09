@@ -37,7 +37,7 @@
     file:
       path: "{{ item.path }}"
       state: absent      
-    with_dict: 
+    with_item: 
     - "{{ files_to_delete.files }}"
     - "{{ dirs_to_delete.files }}"
   
