@@ -18,9 +18,9 @@
     register: files_to_delete
 
   - debug:
-    var: dirs_to_delete
+      var: dirs_to_delete
   - debug:
-    var: files_to_delete
+      var: files_to_delete
     
   
 
