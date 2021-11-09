@@ -21,6 +21,14 @@
       var: dirs_to_delete
   - debug:
       var: files_to_delete
+  
+  - name: Delete files and folders
+    file:
+      path: "{{ item.path }}"
+      state: absent      
+    with_dict: 
+    - "{{ files_to_delete.results.files }}"
+    - "{{ dirs_to_delete.results.files }}"
     
   
 
