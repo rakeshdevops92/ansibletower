@@ -3,16 +3,18 @@
   tasks:
   - name: Find folders to delete
     find:
-      paths: /home/cloud_user/{{ dir_name }}
+      paths: /home/cloud_user/{{ item }}
       recurse: true
       file_type: directory
       excludes: 'APP,DEN'
+    with_items: {{ dir_name }}
     register: dirs_to_delete
 
   - name: Find files to delete
     find:
-      paths: /home/cloud_user/{{ dir_name }}
+      paths: /home/cloud_user/{{ item }}
       recurse: true
+    with_items: {{ dir_name }}
     register: files_to_delete
 
   - name: Delete files and folders
