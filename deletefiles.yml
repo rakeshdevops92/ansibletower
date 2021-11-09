@@ -7,14 +7,14 @@
       recurse: true
       file_type: directory
       excludes: 'APP,DEN'
-    with_items: {{ dir_name }}
+    loop: "{{ dir_name }}"
     register: dirs_to_delete
 
   - name: Find files to delete
     find:
       paths: /home/cloud_user/{{ item }}
       recurse: true
-    with_items: {{ dir_name }}
+    loop: "{{ dir_name }}"
     register: files_to_delete
 
   - name: Delete files and folders
