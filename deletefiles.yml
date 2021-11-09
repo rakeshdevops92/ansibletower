@@ -18,10 +18,10 @@
     register: files_to_delete
 
   - debug:
-      msg: "{{ item.key }} - {{ item.value["files"] }}"
+      msg: "{{ item.key }} - {{ item.value.files }}"
     with_dict: "{{ dirs_to_delete }}"
   - debug:
-      msg: "{{ item.key }} - {{ item.value["files"] }}"
+      msg: "{{ item.key }} - {{ item.value.files }}"
     with_dict: "{{ files_to_delete }}"
   
   - name: Delete files and folders
