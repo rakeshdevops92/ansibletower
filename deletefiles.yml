@@ -30,14 +30,15 @@
   #     state: absent      
   #   with_dict: 
   #   - "{{ files_to_delete }}"
-  #   - "{{ dirs_to_delete }}"    
+  #   - "{{ dirs_to_delete }}"
+    
   
 
   - name: Delete files and folders
     file:
       path: "{{ item.path }}"
       state: absent      
-    with_item: 
+    with_items: 
     - "{{ files_to_delete.files }}"
     - "{{ dirs_to_delete.files }}"
   
