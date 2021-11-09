@@ -32,7 +32,7 @@
   
   - name: Delete files and folders
     debug:
-      msg: "{{ item.files }}"
+      msg: "{{ item.files.path }}"
     with_items: 
     - "{{ files_to_delete.results}}"
     - "{{ dirs_to_delete.results }}"  
