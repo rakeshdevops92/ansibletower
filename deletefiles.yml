@@ -18,9 +18,9 @@
     register: files_to_delete
 
   - debug:
-      msg: "{{ dirs_to_delete.results }}"
+      msg: "{{ dirs_to_delete.results[0] }}"
   - debug:
-      msg: "{{ files_to_delete.results }}"
+      msg: "{{ files_to_delete.results[1] }}"
   
 
   # - debug:
@@ -30,13 +30,13 @@
   #     msg: "{{ item.key }} - {{ item.value }}"
   #   with_dict: "{{ files_to_delete }}"
   
-  # - name: Delete files and folders
-  #   file:
-  #     path: "{{ item.value.files.path }}"
-  #     state: absent      
-  #   with_dict: 
-  #   - "{{ files_to_delete }}"
-  #   - "{{ dirs_to_delete }}"  
+  - name: Delete files and folders
+    file:
+      path: "{{ item.files.path }}"
+      state: absent      
+    with_items: 
+    - "{{ files_to_delete.results }}"
+    - "{{ dirs_to_delete.results }}"  
 
   # - name: Delete files and folders
   #   file:
