@@ -17,28 +17,27 @@
     loop: "{{ dir_name }}"
     register: files_to_delete
 
-  - debug:
-      msg: "{{ item.key }} - {{ item.value }}"
-    with_dict: "{{ dirs_to_delete }}"
-  - debug:
-      msg: "{{ item.key }} - {{ item.value }}"
-    with_dict: "{{ files_to_delete }}"
+  # - debug:
+  #     msg: "{{ item.key }} - {{ item.value }}"
+  #   with_dict: "{{ dirs_to_delete }}"
+  # - debug:
+  #     msg: "{{ item.key }} - {{ item.value }}"
+  #   with_dict: "{{ files_to_delete }}"
   
-  - name: Delete files and folders
-    file:
-      path: "{{ item.value.files.path }}"
-      state: absent      
-    with_dict: 
-    - "{{ files_to_delete }}"
-    - "{{ dirs_to_delete }}"
-    
-  
-
   # - name: Delete files and folders
   #   file:
-  #     path: "{{ item.path }}"
+  #     path: "{{ item.value.files.path }}"
   #     state: absent      
-  #   with_items: 
-  #   - "{{ files_to_delete.files }}"
-  #   - "{{ dirs_to_delete.files }}"
+  #   with_dict: 
+  #   - "{{ files_to_delete }}"
+  #   - "{{ dirs_to_delete }}"    
+  
+
+  - name: Delete files and folders
+    file:
+      path: "{{ item.path }}"
+      state: absent      
+    with_items: 
+    - "{{ files_to_delete.files }}"
+    - "{{ dirs_to_delete.files }}"
   
