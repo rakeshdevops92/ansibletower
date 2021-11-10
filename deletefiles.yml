@@ -40,7 +40,7 @@
 
 
   - debug:
-      msg: {{ item }}
+      msg: "{{ item }}"
     with_items: 
     - "{{ output }}"
     
