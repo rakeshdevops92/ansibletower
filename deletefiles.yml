@@ -30,20 +30,17 @@
   #     msg: "{{ item.key }} - {{ item.value }}"
   #   with_dict: "{{ files_to_delete }}"
   
-  - name: Delete files and folders
-    block:
-    - debug:
-        msg: "{{ item.files }}"
-      register: output
-      with_items: 
-      - "{{ files_to_delete.results}}"
-      - "{{ dirs_to_delete.results}}"
-    rescue:
-    - debug:
-        msg: '{{ output }}'
 
   - debug:
-    register: {{ item }}
+      msg: "{{ item.files }}"
+    register: output
+    with_items: 
+    - "{{ files_to_delete.results}}"
+    - "{{ dirs_to_delete.results}}"
+
+
+  - debug:
+      msg: {{ item }}
     with_items: 
     - "{{ output }}"
     
