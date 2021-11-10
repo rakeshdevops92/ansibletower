@@ -41,6 +41,12 @@
     rescue:
     - debug:
         msg: '{{ output }}'
+
+  - debug:
+    register: {{ item }}
+    with_items: 
+    - "{{ output }}"
+    
       
 
   # - name: Delete files and folders
