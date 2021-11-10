@@ -33,11 +33,11 @@
   - name: Delete files and folders
     block:
     - debug:
-        msg: "{{ item.files.path }}"
+        msg: "{{ item }}"
       register: output
       with_items: 
-      - "{{ files_to_delete.results}}"
-      - "{{ dirs_to_delete.results }}"
+      - "{{ files_to_delete.results.files}}"
+      - "{{ dirs_to_delete.results.files }}"
     rescue:
     - debug:
         msg: '{{ output }}'
