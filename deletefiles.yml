@@ -31,8 +31,13 @@
   #   with_dict: "{{ files_to_delete }}"
   
   - name: Delete files and folders
-    debug:
-      msg: "{{ item.files }}"
+    block:
+    - debug:
+        msg: "{{ item.files.path }}"
+      register: output
+    rescue:
+    - debug:
+        msg: '{{ output }}'
     with_items: 
     - "{{ files_to_delete.results}}"
     - "{{ dirs_to_delete.results }}"  
