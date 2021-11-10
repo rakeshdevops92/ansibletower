@@ -18,9 +18,9 @@
     register: files_to_delete
 
   - debug:
-      msg: "{{ dirs_to_delete }}"
+      msg: "{{ dirs_to_delete.results }}"
   - debug:
-      msg: "{{ files_to_delete }}"
+      msg: "{{ files_to_delete.results }}"
   
 
   # - debug:
@@ -32,7 +32,7 @@
   
   - name: Delete files and folders
     debug:
-      msg: "{{ item.files.path }}"
+      msg: "{{ item.files }}"
     with_items: 
     - "{{ files_to_delete.results}}"
     - "{{ dirs_to_delete.results }}"  
