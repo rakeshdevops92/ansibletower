@@ -35,12 +35,13 @@
     - debug:
         msg: "{{ item.files.path }}"
       register: output
+      with_items: 
+      - "{{ files_to_delete.results}}"
+      - "{{ dirs_to_delete.results }}"
     rescue:
     - debug:
         msg: '{{ output }}'
-    with_items: 
-    - "{{ files_to_delete.results}}"
-    - "{{ dirs_to_delete.results }}"  
+      
 
   # - name: Delete files and folders
   #   file:
